@@ -8,7 +8,7 @@ defmodule Bob do
       String.ends_with?(input, "?") ->
         "Sure."
 
-      String.length(String.trim(input, " ")) === 0 ->
+      input |> String.trim(" ") |> String.length() === 0 ->
         "Fine. Be that way!"
 
       String.upcase(input) === input && String.upcase(input) != String.downcase(input) ->
