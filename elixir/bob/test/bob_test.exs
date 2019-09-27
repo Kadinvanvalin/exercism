@@ -60,7 +60,7 @@ defmodule BobTest do
     assert Bob.hey("  ") == "Fine. Be that way!"
   end
 
-  # @tag :pending
+  # @tag :pendinghttps://github.com/christopheradams/elixir_style_guide
   test "only numbers" do
     assert Bob.hey("1, 2, 3") == "Whatever."
   end
