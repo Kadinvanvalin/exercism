@@ -20,16 +20,21 @@ defmodule RotationalCipher do
   def rotate_one(char, shift) do
     index = Enum.find_index(@alphabet, fn x -> x === char end)
   
-     Enum.at(@alphabet, wrap_around(index, shift))
+    #  Enum.at(@alphabet, wrap_around(index, shift))
+    wrap_around(index, shift)
   end
 
-  defp wrap_around(index, 0) do
-    index
-  end
+  # defp wrap_around(index, 0) do
+  #   index
+  # end
 
   defp wrap_around(index, shift) do
-    max_value = length(@alphabet)
-    new_index = if(index + 1 === max_value, do: 0, else: index + 1)
-    wrap_around(new_index, shift - 1)
+      Stream.cycle(@alphabet)
+      |> Enum.take(50)
+      |> Enum.drop(shift)
+      |> Enum.take(index)
+    # max_value = length(@alphabet)
+    # new_index = if(index + 1 === max_value, do: 0, else: index + 1)
+    # wrap_around(new_index, shift - 1)
   end
 end
